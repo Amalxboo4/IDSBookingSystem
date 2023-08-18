@@ -1,0 +1,191 @@
+<html>
+    <head>
+        <!-- bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">        <!-- <link rel="stylesheet" href="../Styles/homiecss.css"> -->
+        <link rel="stylesheet" href="../Styles/loginstyles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+        <title>
+            Sign Up
+        </title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+        <div class="title">
+            <h1>Sign Up Now!</h1>
+        </div>
+
+        <div class="container">
+            <div id="response-display" class="w-100"></div>
+        </div>
+
+        <div class="paragraph" style="border:0; top: 100px;">
+
+            <form class="form" name="signup-form">
+                <label for="un">First Name</label>
+                <br>
+                <input type="text" name="firstname" class="txtfield" id="first_name">
+                <br>
+                <label for="un">Last Name</label>
+                <br>
+                <input type="text" name="lastname" class="txtfield" id="last_name">
+                <br>
+                <label for="un">Username *</label>
+                <br>
+                <input type="text" name="username" class="txtfield" id="username" required>
+                <br>
+                <label for="un">Email *</label>
+                <br>
+                <input type="text" name="email" class="txtfield" id="email" required>
+                <br>
+                <label for="pass">Password *</label>
+                <br>
+                <input type="password" name="pass" class="txtfield" id="password" required>
+                <br>
+                <label for="pass">Confirm Password *</label>
+                <br>
+                <input type="password" name="confirmPassword" class="txtfield" id="cpass" required>
+                <br><br>
+                <input type="checkbox" name="cbcaptcha" id="cbcaptcha" id="captcha">
+                <label for="cbcaptcha">I am human</label>
+                <br>
+                <br>
+
+                <button class="btn btn-primary btn btn-danger btn-block text-white" id="signup-btn" type="submit">
+                    <i class="fas fa-user"></i>
+                    Sign Up
+                </button>
+                <button class="btn btn-primary btn btn-danger btn-block text-white" id="cancel-btn" type="button"
+                    onclick="ClearForm()">
+
+                    Clear
+                </button>
+            </form>
+        </div>
+        <br>
+        <span id="login"
+            style=" -webkit-text-stroke: 0;margin-right: 10; font-family: sans-serif; position:relative; top: 400;; left:42%; color: white;">
+            Already have an account? Login!
+        </span>
+        <br><br>
+        <button onclick="window.location.href='../index.php';"
+            class="btn btn-primary btn btn-danger btn-block text-white" id="news-button" type="button"
+            style="top: 390;left: 47%;position: relative;">
+            <i class="fas fa-user"></i>
+            Login
+        </button>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
+
+        <script>
+            var failure = '<div class="alert alert-danger alert-dismissible fade show" role="alert">Account Was Not Created! Please try again or support if the problem persists.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+
+            var already = '<div class="alert alert-danger alert-dismissible fade show" role="alert">User Already Exists.Please try a different username.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+
+            var passerr = '<div class="alert alert-danger alert-dismissible fade show" role="alert">Passwords Do Not Match.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+
+            var badpass = '<div class="alert alert-danger alert-dismissible fade show" role="alert">Password does not meet the requirements. Passwords must contain 1 lowecase character, 1 uppercase character, 1 special character, and 1 number.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+
+            function ClearForm() {
+                var mForm = document.querySelector("form[name='signup-form']");
+                mForm.elements["firstname"].value = "";
+                mForm.elements["lastname"].value = "";
+                mForm.elements["email"].value = "";
+                mForm.elements["pass"].value = "";
+                mForm.elements["confirmPassword"].value = "";
+                mForm.elements["username"].value = "";
+                mForm.elements["cbcaptcha"].checked = false;
+            }
+
+            function validatePassword(password) {
+                // validate that password has at least 8 characters
+                if (password.length < 8) {
+                    return false;
+                }
+
+                // validate that password contains at least one lowercase letter
+                var lowercaseRegex = /^(?=.*[a-z])/;
+                if (!lowercaseRegex.test(password)) {
+                    return false;
+                }
+
+                // validate that password contains at least one uppercase letter
+                var uppercaseRegex = /^(?=.*[A-Z])/;
+                if (!uppercaseRegex.test(password)) {
+                    return false;
+                }
+
+                // validate that password contains at least one number
+                var numberRegex = /^(?=.*\d)/;
+                if (!numberRegex.test(password)) {
+                    return false;
+                }
+
+                // validate that password contains at least one special character
+                var specialCharRegex = /^(?=.*[!@#$%^&*])/;
+                if (!specialCharRegex.test(password)) {
+                    return false;
+                }
+
+                // all validation checks passed
+                return true;
+            }
+
+            $('form').submit(function (event) {
+                //Prevents the default form submission behavior from occurring
+                event.preventDefault();
+
+                if ($("#password").val() != $("#cpass").val()) {
+                    $("#response-display").append(passerr);
+                } else {
+                    // creates an object named info with properties for the first name, last name... + converts this object to a JSON string and assigns it to a variable
+
+                    if (validatePassword($("#password").val())) {
+                        var info = {
+                            fn: $("#first_name").val(),
+                            ln: $("#last_name").val(),
+                            username: $("#username").val(),
+                            email: $("#email").val(),
+                            pass: $("#password").val()
+                        };
+                        var jsonInfo = JSON.stringify(info);
+                        //sends an AJAX request to the server
+                        $.ajax({
+                            url: "../Backend/signup.php",
+                            method: "POST",
+                            data: { data: jsonInfo },
+                            dataType: "json",
+                            success: function (response) {
+                                console.log("response: " + response.status);
+                                if (response.status == '0') {
+                                    $("#response-display").append(already);
+                                } else if (response.status == '2') {
+                                    $("#response-display").append(failure);
+                                } else {
+                                    window.location.href = "../index.php";
+                                }
+                            },
+                            error: function (xhr, status, error) {
+                                debugger; // add breakpoint here
+                                console.log("Error: " + error);
+                            }
+                        });
+
+
+                    } else {
+                        $("#response-display").append(badpass);
+                    }
+
+
+                }
+            });
+
+        </script>
+    </body>
+
+</html>

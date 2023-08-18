@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href ='script.css'>
+    <title>Calendar View</title>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-light bg-light" style="padding: 0;">
+        <div class="container-fluid" style="background-color:#198754; padding: 0; box-shadow: 0px 4px 8px rgba(0, 128, 0, 0.3); height: 50px;">
+            <a class="navbar-brand" href="#" style="margin-left: 10px; font-weight: bold; color: white;">IDSBookingSystem</a>
+            <div style="margin-right: 10px; margin-left: auto; display: flex; align-items: center;">
+                <a href="#" style="color: white; text-decoration: none;">
+                    <i class="fas fa-user-circle fa-2x" style="margin-right: 10px;"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+<div class="container">
+    <div class="row">
+        
+            <div class="col-md-4" style="margin-left: 0px;">
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Company Name: </div>
+                    <div class="card-body text-success">
+                    <h5 class="card-title">Success card title</h5>
+                    </div>
+                </div>
+                <div class="custom-mt">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h3 class="card-title" style="font-size: 32px;">Create Meeting</h3>
+                            <br>
+                            <input type="date" id="meeting-date" class="form-control mb-2">
+                            <input type="time" id="start-time" class="form-control mb-2">
+                            <input type="time" id="end-time" class="form-control mb-2">
+                            <input type="text" id="location" class="form-control mb-2" placeholder="Location">
+                            <br>
+                            <button id="create-meeting-btn" class="btn btn-success" style="color: white; height: 50px;">Create Meeting</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="col-md-8">
+                <div class="container mt-1">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 mt-2" style="margin-left: 120px; ">
+                            <div class="card shadow">
+                                <div class="card-header" style="padding: 20px;">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <button id="prev-month" class="btn btn-outline-success btn-lg btn-responsive" ><i style="padding: 10px;">Previous</i></button>
+                                        <h2 id="current-month" style="font-size: 35px;">August 2023</h2>
+                                        <button id="next-month" class="btn btn-outline-success btn-lg btn-responsive"><i style="padding: 10px;"> Next </i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="calendar-grid" id="calendar-grid"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </div>
+</div>
+                
+    <script src="script.js"></script>
+</body>
+</html>

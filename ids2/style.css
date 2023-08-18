@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #b4ddacd7;
+}
+
+.card {
+    border: none;
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+#calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.day:hover {
+    background-color: #f0f0f0;
+}
+
+.weekday {
+    font-weight: bold;
+    color: #333;
+}
+
+.current-day {
+    background-color: #d4f7dc; 
+    font-weight: bold;
+    color: #333;
+}
+.custom-mt {
+    /* margin-top: 160px; Adjust the value as needed */ 
+    margin-left: 80px;
+    float: left;
+  }
+  
